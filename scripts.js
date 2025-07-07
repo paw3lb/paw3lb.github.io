@@ -32,7 +32,7 @@ async function leaderboard() {
         }
     }
 
-   //* let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
 
    // leaderboard.sort((a, b) => b.score - a.score)
    // localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
@@ -76,7 +76,7 @@ async function showLeaderboard() {
         console.error("Błąd przy pobieraniu wyników:", error);
     }
 }   
- //   let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
 
 //    leaderboard.forEach(entry => {
 //        const li = document.createElement("li");
