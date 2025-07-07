@@ -6,7 +6,7 @@ if (localStorage.getItem("clicks")) {
     document.getElementById("currency").innerHTML = clicks.toFixed(1);
 }
 
-function money() {
+function score() {
     clicks = clicks + clickPower;
     let niepowienm = clicks.toFixed(1);
     document.getElementById("currency").innerHTML = niepowienm;
@@ -52,11 +52,8 @@ async function leaderboard() {
     leaderboard.sort((a, b) => b.score - a.score);
 
 // Zapis
-    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+//    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
     
-// Odśwież wyświetlanie
-    showLeaderboard();
-
 
 // Wyświetl leaderboard
 async function showLeaderboard() {
@@ -64,7 +61,11 @@ async function showLeaderboard() {
     list.innerHTML = "";
 
     try {
-        const snapshot = await db.collection("leaderboard").orderBy("score", "desc").limit(10).get();
+        const snapshot = await db.collection("leaderboard")
+        .orderBy("score", "desc")
+        .limit(10)
+        .get();
+        
         snapshot.forEach(doc => {
         const data = doc.data();
         const li = document.createElement("li");
