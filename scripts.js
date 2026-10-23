@@ -139,6 +139,11 @@ async function leaderboard(){
 
 window.onload = () => {
   wczytajLd();
+
+// Przypisanie zdarzeń JavaScript zamiast inline onclick w HTML
+document.getElementById("clicks").addEventListener("click", money);
+document.getElementById("kupEgo").addEventListener("click", ego);
+document.getElementById("zapiszBtn").addEventListener("click", leaderboard);
 };
 
 // Zapis
