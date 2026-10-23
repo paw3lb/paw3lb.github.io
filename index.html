@@ -5,29 +5,19 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <p>Kliknięć:</p> <p id="currency">0</p>
-        <button onclick="money()" id="button">KLIKNIJ</button>
-        <script src="scripts.js"></script>
-
-        <br /><br />
-
-        <input type="text" id="nickname" placeholder="twuj nick ys">
-        <button onclick="leaderboard()">zapisz</button>
-
-        <div id="leaderboard">
-            <ol id="lista"></ol>
-        </div>
-
         <script type="module">
-
             // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
+            import { getFirestore } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
+
             // Your web app's Firebase configuration
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             const firebaseConfig = {
+
                 apiKey: "AIzaSyD6Sg3kKU8csaI5VChbJwS-dAGyAwkXK7M",
                 authDomain: "ejokliker.firebaseapp.com",
                 projectId: "ejokliker",
@@ -40,7 +30,31 @@
             // Initialize Firebase
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
+            const db = getFirestore(app);
 
+            window.db = db;
         </script>
+        <div id="gierka">
+            <div class="cor">
+                <img src="ejo.png" onclick="money()" id="clicks" />
+                <p>Kliknięć:</p> <p id="currency">0</p>
+            </div>
+        
+        <div id="shop">
+            <p>kup ego - +2 klikniec co 5 sek | 50 ejo</p> <p id="ego">0</p>
+            <button onclick="ego()" id="kupEgo">kup</button>
+        </div>
+        </div>
+        <div id="ld">
+            <ol id="lista"></ol>
+        </div>
+
+        <br /><br /><br />
+
+        <div id="zapis">
+            <input type="text" id="nickname" placeholder="twuj nick ys">
+            <button onclick="leaderboard()">zapisz</button>
+        </div>
+        <script src="scripts.js"></script>
     </body>
 </html>

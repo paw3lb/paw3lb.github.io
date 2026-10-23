@@ -1,12 +1,29 @@
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD6Sg3kKU8csaI5VChbJwS-dAGyAwkXK7M",
+  authDomain: "ejokliker.firebaseapp.com",
+  projectId: "ejokliker",
+  storageBucket: "ejokliker.firebasestorage.app",
+  messagingSenderId: "625545140275",
+  appId: "1:625545140275:web:5267a824c4c319b830eb46",
+  measurementId: "G-JQ93QGPLXC"
+};
+
 let clicks = 0
 let clickPower = 1
+let egos = 0
 
 if (localStorage.getItem("clicks")) {
     clicks = parseFloat(localStorage.getItem("clicks"));
     document.getElementById("currency").innerHTML = clicks.toFixed(1);
 }
 
-function score() {
+ if (localStorage.getItem("egos")) {
+    egos = parseFloat(localStorage.getItem("egos"));
+    document.getElementById("ego").innerHTML = egos.toFixed(1);
+} 
+
+function money() {
     clicks = clicks + clickPower;
     let niepowienm = clicks.toFixed(1);
     document.getElementById("currency").innerHTML = niepowienm;
@@ -14,78 +31,116 @@ function score() {
     localStorage.setItem("clicks", clicks);
 }
 
-async function leaderboard() {
-    const nickname = document.getElementById("nickname").value.trim();
-    if (!nickname) {
-        alert("wpisz cos cwelu")
+  function ego() {
+    if (clicks >= 50) {
+       clicks -= 50;
+       document.getElementById("currency").innerHTML = clicks.toFixed(1);
+       egos += 1;
+       document.getElementById("ego").innerHTML = egos.toFixed(1);
+    }
+
+    localStorage.setItem("egos", egos);
+}
+
+function egoPlus() {
+    if (egos >= 1) {
+        clicks = clicks + (egos * 2);
+       document.getElementById("currency").innerHTML = clicks.toFixed(1);
+       localStorage.setItem("clicks", clicks);
+    }
+} 
+
+setInterval(egoPlus, 5000); 
+async function wczytajLd() {
+    const lista = document.getElementById("lista");
+    if (!lista) return;
+    
+    lista.innerHTML = "<li>Ładowanie leaderboardu...</li>";
+
+    if (!window.db) {
+        lista.innerHTML = "<li>Firebase nie jest zainicjowany</li>";
         return;
     }
 
-    const score = parseFloat(clicks.toFixed(1));
+    try {
+        const { collection, getDocs, query, orderBy, limit } = 
+            await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js");
 
-      try {
-        await db.collection("leaderboard").doc(nickname).set({ score });
-        alert("Wynik zapisany!");
-        showLeaderboard(); // odśwież ranking
-        } catch (error) {
-            console.error("Błąd przy zapisie:", error);
+        const q = query(
+            collection(window.db, "ld"),
+            orderBy("clicks", "desc"),
+            limit(10)
+        );
+
+        const snapshot = await getDocs(q);
+
+        lista.innerHTML = "";
+
+        console.log("Liczba dokumentów:", snapshot.size);   // ← ważne do debugu
+
+        if (snapshot.empty) {
+            lista.innerHTML = "<li>Brak wyników na leaderboardzie</li>";
+            return;
         }
+
+        snapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            const li = document.createElement("li");
+            li.textContent = `${data.nick || "?"} — ${Math.floor(data.clicks || 0)} ejo`;
+            lista.appendChild(li);
+        });
+
+    } catch (err) {
+        console.error("Błąd przy wczytywaniu ld:", err);
+        lista.innerHTML = `<li>Błąd: ${err.message}</li>`;
+    }
+}
+
+async function leaderboard(){
+    const nickname = document.getElementById("nickname").value.trim();
+    if (!nickname) return alert("podaj nick");
+
+    const { collection, setDoc, query, where, getDocs, doc } = await import(
+        "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js"   
+    );
+
+    try {
+        const q = query(
+            collection(window.db, "ld"),
+            where("nick", "==", nickname)
+        )
+
+        const snapshot = await getDocs(q);
+        let docRef;
+
+        if (!snapshot.empty) {
+            const existingDoc = snapshot.docs[0];
+            docRef = doc(window.db, "ld", existingDoc.id);
+        } else {
+            docRef = doc(window.db, "ld", nickname);
+        }
+        await setDoc(docRef, {
+            nick: nickname,
+            clicks: clicks,
+            ego: egos,
+            time: Date.now()
+
+        });
+        
+    } catch(error) {
+        console.error("Błąd zapisu:", error);
+        alert("blad zapisu");
     }
 
-    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    console.log("Próba zapisu:", nickname, clicks, egos);
+    await wczytajLd();
 
-   // leaderboard.sort((a, b) => b.score - a.score)
-   // localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+}
 
-    //showLeaderboard(); 
-
-// Dodaj wynik użytkownika
-    const existing = leaderboard.find(entry => entry.nick === nickname);
-    if (existing) {
-        if (score > existing.score) {
-            existing.score = score;
-        }
-    } else {
-        leaderboard.push({ nick: nickname, score: score });
-    }
-
-    leaderboard.sort((a, b) => b.score - a.score);
+window.onload = () => {
+  wczytajLd();
+};
 
 // Zapis
 //    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-    
 
-// Wyświetl leaderboard
-async function showLeaderboard() {
-    const list = document.getElementById("lista");
-    list.innerHTML = "";
-
-    try {
-        const snapshot = await db.collection("leaderboard")
-        .orderBy("score", "desc")
-        .limit(10)
-        .get();
-        
-        snapshot.forEach(doc => {
-        const data = doc.data();
-        const li = document.createElement("li");
-        li.textContent = `${doc.id} — ${data.score}`;
-        list.appendChild(li);
-        });
-    } catch (error) {
-        console.error("Błąd przy pobieraniu wyników:", error);
-    }
-}   
-    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
-
-//    leaderboard.forEach(entry => {
-//        const li = document.createElement("li");
-//        li.textContent = `${entry.nick} — ${entry.score}`;
-//        list.appendChild(li);
-//    });
-//}
-
-// Pokaż leaderboard przy starcie
-window.onload = function () {
-    showLeaderboard();
-};
