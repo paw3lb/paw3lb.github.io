@@ -1,5 +1,15 @@
+:root { 
+--buttonColor0: rgba(102, 187, 106, 1); 
+--buttonColor1: rgba(0,0,0,0); 
+--buttonColor2: rgba(0, 0, 0, 0); 
+--buttonFontColor: rgba(20.999999999999996, 20.999999999999996, 20.999999999999996, 1); 
+--buttonFontSize: 16pxpx; 
+}
+
+
 body {
     background-color: #dbd6a8;
+    overflow:hidden;
 }
 
 .cor {
@@ -13,13 +23,16 @@ body {
     transition: ease-out, width 250ms, height 250ms;
     padding-top: 50px;
     padding-left: 50px;
+    display: inline-block;
+    touch-action: manipulation;
+    transition: all 150ms;
 }
-#clicks:hover {
+/*#clicks:hover {
     cursor: pointer;
     transition: ease-in, width 250ms, height 250ms;
     width: 100%;
     height: 100%;
-}
+} */
 
 #zapis {
     float: left;
@@ -34,5 +47,198 @@ body {
     background-color: #b9b48f;
     padding: 2%;
     border-radius: 12px;
-    width: 10%;
+    width: 18em;
 }
+
+#shop-frame {
+    float: right;
+    padding-right: 30em;
+    width: 50%;
+}
+
+/*#clicks:active {
+    transform: scale(0.9);
+    transition: all 150ms;
+}*/
+
+.buttonWrap {
+    z-index: 1;
+    position: relative;
+    width: 400px;
+    height: 400px;
+
+}
+
+.particleButton {
+	z-index: 1;
+	color: var(--buttonFontColor);
+	padding: 0em;
+	font-size: var(--buttonFontSize);
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(1, 1);
+
+	background-color: unset;
+	background: var(--buttonColor0);
+	pointer-events: all;
+	cursor: pointer;
+	border-radius: 50%;
+	border-width: 0px;
+	box-sizing: border-box;
+	transition: box-shadow ease-out 0.3s, transform 0.1s ease-in;
+	box-shadow: 0px 0px 0px 5px var(--buttonColor2),
+		0px 0px 0px 9px var(--buttonColor1),
+		inset 0px 0px 0px 0px var(--buttonColor2);
+}
+.particleButton:hover:not(:active) {
+	transition: 0.1s ease-in-out all;
+	box-shadow: 0px 0px 0px 8px var(--buttonColor2),
+		0px 0px 0px 14px var(--buttonColor1),
+		inset 0px 0px 0px 0px var(--buttonColor2);
+
+	transform: translate(-50%, -50%) scale(0.95, 0.95);
+}
+.particles {
+	z-index: -1;
+	background: none !important;
+	pointer-events: none;
+	cursor: pointer;
+	box-shadow: none;
+}
+.particles::after {
+	position: absolute;
+	content: "";
+	left: -105px;
+	top: -105px;
+	min-width: 300px;
+	min-height: 300px;
+	pointer-events: none;
+	transition: background-size ease-in-out 0.5s,
+		background-position ease-in-out 0.5s;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.particleButton:active {
+	transition: box-shadow ease-out 0.1s, background-size ease-in-out 0.1s,
+		background-position ease-in-out 0.1s;
+	box-shadow: 0px 0px 0px 0px var(--buttonColor2),
+		0px 0px 0px 5px var(--buttonColor1),
+		inset 0px 0px 0px 5px var(--buttonColor2);
+
+	transform: translate(-50%, -50%) scale(0.9, 0.9);
+}
+.particleButton:active ~ .particles::after {
+	animation: none;
+	background-size: 0;
+}
+.theButton.animated::after { 
+    animation: theButtonAnimation linear 1.65s forwards;
+    background-image: 
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),
+        radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%);
+} 
+@keyframes theButtonAnimation {
+    0% {
+        
+        background-size: 65px 65px,51px 51px,55px 55px,62px 62px,62px 62px,54px 54px,63px 63px,52px 52px,51px 51px,59px 59px,66px 66px,50px 50px,58px 58px,58px 58px,60px 60px,65px 65px,51px 51px,53px 53px,52px 52px,58px 58px,60px 60px,55px 55px,58px 58px,56px 56px,51px 51px,52px 52px,54px 54px,56px 56px,64px 64px,66px 66px;
+        background-position: 517px 477px,520px 495px,513px 502px,502px 506px,494px 513px,488px 521px,473px 518px,468px 524px,458px 522px,444px 514px,432px 504px,433px 504px,424px 491px,420px 481px,418px 469px,417px 456px,427px 453px,431px 443px,439px 435px,445px 426px,454px 421px,467px 421px,475px 419px,487px 423px,499px 429px,508px 435px,513px 442px,518px 450px,517px 456px,517px 466px;
+    }
+    10% {
+        
+        background-size: 41px 41px,32px 32px,35px 35px,40px 40px,40px 40px,34px 34px,41px 41px,33px 33px,32px 32px,38px 38px,42px 42px,31px 31px,37px 37px,37px 37px,38px 38px,42px 42px,33px 33px,34px 34px,33px 33px,37px 37px,37px 37px,35px 35px,37px 37px,36px 36px,32px 32px,33px 33px,35px 35px,35px 35px,41px 41px,42px 42px;
+        background-position: 594px 499px,570px 531px,559px 537px,518px 554px,479px 550px,490px 577px,456px 605px,445px 561px,503px 597px,414px 587px,403px 494px,412px 501px,412px 463px,356px 464px,429px 517px,391px 535px,385px 405px,380px 491px,483px 403px,415px 428px,459px 385px,481px 406px,426px 387px,475px 371px,526px 371px,568px 431px,549px 414px,564px 406px,599px 445px,568px 505px;
+    }
+    20% {
+        
+        background-size: 25px 25px,20px 20px,23px 23px,25px 25px,26px 26px,21px 21px,26px 26px,21px 21px,20px 20px,24px 24px,27px 27px,20px 20px,24px 24px,23px 23px,24px 24px,27px 27px,21px 21px,22px 22px,21px 21px,23px 23px,23px 23px,22px 22px,24px 24px,23px 23px,20px 20px,21px 21px,22px 22px,22px 22px,26px 26px,27px 27px;
+        background-position: 648px 513px,594px 553px,581px 553px,513px 568px,460px 536px,486px 604px,438px 671px,431px 566px,543px 648px,388px 642px,408px 469px,431px 483px,440px 441px,304px 445px,482px 525px,381px 601px,354px 364px,349px 537px,526px 402px,407px 448px,465px 370px,492px 429px,381px 371px,460px 337px,542px 326px,605px 437px,561px 401px,590px 370px,661px 434px,587px 533px;
+    }
+    30% {
+        
+        background-size: 16px 16px,12px 12px,14px 14px,16px 16px,16px 16px,13px 13px,17px 17px,14px 14px,13px 13px,15px 15px,17px 17px,12px 12px,15px 15px,15px 15px,15px 15px,17px 17px,13px 13px,14px 14px,14px 14px,14px 14px,15px 15px,14px 14px,15px 15px,14px 14px,13px 13px,13px 13px,14px 14px,14px 14px,16px 16px,17px 17px;
+        background-position: 690px 522px,602px 564px,586px 557px,497px 550px,482px 467px,480px 612px,418px 728px,430px 548px,578px 690px,364px 688px,445px 450px,512px 482px,500px 458px,256px 424px,524px 460px,375px 657px,326px 325px,326px 577px,557px 423px,421px 477px,472px 368px,492px 515px,341px 359px,444px 310px,554px 286px,628px 446px,560px 399px,608px 339px,713px 423px,587px 550px;
+    }
+    40% {
+        
+        background-size: 10px 10px,8px 8px,9px 9px,10px 10px,10px 10px,8px 8px,11px 11px,9px 9px,8px 8px,10px 10px,11px 11px,8px 8px,9px 9px,9px 9px,9px 9px,11px 11px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,8px 8px,8px 8px,9px 9px,9px 9px,10px 10px,11px 11px;
+        background-position: 726px 529px,598px 566px,575px 550px,484px 468px,537px 445px,474px 603px,398px 781px,455px 508px,610px 726px,340px 730px,517px 479px,559px 519px,527px 535px,211px 403px,502px 431px,371px 706px,299px 288px,307px 613px,570px 460px,482px 510px,480px 378px,480px 565px,302px 349px,429px 287px,563px 249px,638px 457px,548px 410px,621px 312px,759px 410px,571px 557px;
+    }
+    50% {
+        
+        background-size: 6px 6px,5px 5px,6px 6px,6px 6px,7px 7px,5px 5px,7px 7px,5px 5px,5px 5px,6px 6px,7px 7px,5px 5px,6px 6px,6px 6px,6px 6px,7px 7px,5px 5px,6px 6px,5px 5px,5px 5px,5px 5px,5px 5px,6px 6px,6px 6px,5px 5px,5px 5px,6px 6px,5px 5px,6px 6px,7px 7px;
+        background-position: 756px 534px,582px 560px,542px 527px,504px 419px,558px 469px,471px 574px,378px 830px,538px 469px,640px 758px,317px 768px,537px 546px,552px 540px,497px 568px,166px 382px,472px 460px,367px 751px,274px 252px,292px 646px,551px 509px,561px 496px,489px 402px,477px 565px,266px 341px,413px 268px,570px 214px,638px 470px,523px 439px,630px 287px,802px 398px,536px 547px;
+    }
+    60% {
+        
+        background-size: 4px 4px,3px 3px,3px 3px,4px 4px,4px 4px,3px 3px,4px 4px,3px 3px,3px 3px,4px 4px,4px 4px,3px 3px,4px 4px,3px 3px,3px 3px,4px 4px,3px 3px,3px 3px,3px 3px,3px 3px,3px 3px,3px 3px,4px 4px,3px 3px,3px 3px,3px 3px,3px 3px,3px 3px,4px 4px,4px 4px;
+        background-position: 782px 538px,548px 540px,463px 474px,521px 413px,529px 510px,483px 507px,357px 876px,582px 477px,668px 787px,295px 804px,513px 576px,507px 528px,465px 555px,123px 361px,496px 537px,364px 794px,249px 217px,278px 676px,474px 527px,582px 472px,499px 455px,488px 514px,232px 334px,398px 252px,576px 182px,627px 485px,482px 522px,637px 264px,842px 385px,475px 486px;
+    }
+    70% {
+        
+        background-size: 2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,3px 3px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,3px 3px;
+        background-position: 806px 541px,475px 480px,424px 451px,530px 434px,449px 509px,532px 437px,336px 921px,594px 493px,694px 814px,273px 838px,482px 571px,465px 458px,464px 497px,81px 340px,541px 546px,362px 833px,224px 183px,266px 704px,429px 481px,575px 455px,497px 554px,523px 443px,199px 327px,384px 239px,581px 151px,602px 500px,475px 581px,642px 244px,880px 373px,460px 425px;
+    }
+    80% {
+        
+        background-size: 1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px;
+        background-position: 826px 544px,438px 433px,413px 444px,511px 499px,431px 478px,563px 417px,316px 965px,582px 511px,720px 840px,251px 871px,462px 525px,476px 429px,531px 457px,39px 319px,547px 509px,359px 871px,201px 150px,256px 730px,430px 440px,541px 454px,489px 598px,535px 432px,167px 321px,371px 227px,586px 121px,554px 514px,478px 607px,645px 225px,916px 360px,465px 396px;
+    }
+    90% {
+        
+        background-size: 1px 1px,0px 0px,1px 1px,1px 1px,1px 1px,0px 0px,1px 1px,1px 1px,0px 0px,1px 1px,1px 1px,0px 0px,1px 1px,0px 0px,0px 0px,1px 1px,1px 1px,1px 1px,1px 1px,0px 0px,0px 0px,0px 0px,1px 1px,1px 1px,0px 0px,0px 0px,1px 1px,0px 0px,1px 1px,1px 1px;
+        background-position: 845px 546px,423px 410px,419px 449px,457px 552px,459px 459px,581px 413px,296px 1007px,536px 522px,744px 864px,230px 903px,508px 455px,501px 442px,568px 480px,-2px 298px,480px 472px,357px 908px,178px 117px,247px 755px,452px 415px,476px 503px,482px 618px,527px 459px,137px 316px,359px 218px,590px 93px,458px 498px,485px 615px,647px 209px,951px 348px,476px 386px;
+    }
+    100% {
+        
+        background-size: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+        background-position: 862px 548px,418px 399px,449px 468px,432px 556px,525px 497px,588px 421px,275px 1049px,452px 486px,768px 887px,209px 933px,559px 456px,511px 520px,562px 516px,-42px 277px,437px 499px,356px 943px,155px 85px,239px 778px,486px 411px,460px 563px,478px 623px,476px 532px,107px 311px,348px 211px,593px 66px,412px 462px,494px 605px,648px 194px,985px 336px,491px 393px;
+    }} 
+.theButton.particles::after {
+    left: -455px;
+    top: -455px;
+    min-width: 1000px;
+    min-height: 1000px;
+}
+.theButton {
+    width: 90px;
+    height: 90px;
+    background: rgba(102, 187, 106, 1);
+    color: rgba(20.999999999999996, 20.999999999999996, 20.999999999999996, 1);
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0), 0px 0px 0px 9px rgba(0,0,0,0), inset 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+@keyframes theButtonAnimation {0% {background-size: 65px 65px,51px 51px,55px 55px,62px 62px,62px 62px,54px 54px,63px 63px,52px 52px,51px 51px,59px 59px,66px 66px,50px 50px,58px 58px,58px 58px,60px 60px,65px 65px,51px 51px,53px 53px,52px 52px,58px 58px,60px 60px,55px 55px,58px 58px,56px 56px,51px 51px,52px 52px,54px 54px,56px 56px,64px 64px,66px 66px;background-position: 517px 477px,520px 495px,513px 502px,502px 506px,494px 513px,488px 521px,473px 518px,468px 524px,458px 522px,444px 514px,432px 504px,433px 504px,424px 491px,420px 481px,418px 469px,417px 456px,427px 453px,431px 443px,439px 435px,445px 426px,454px 421px,467px 421px,475px 419px,487px 423px,499px 429px,508px 435px,513px 442px,518px 450px,517px 456px,517px 466px;}10% {background-size: 41px 41px,32px 32px,35px 35px,40px 40px,40px 40px,34px 34px,41px 41px,33px 33px,32px 32px,38px 38px,42px 42px,31px 31px,37px 37px,37px 37px,38px 38px,42px 42px,33px 33px,34px 34px,33px 33px,37px 37px,37px 37px,35px 35px,37px 37px,36px 36px,32px 32px,33px 33px,35px 35px,35px 35px,41px 41px,42px 42px;background-position: 594px 499px,570px 531px,559px 537px,518px 554px,479px 550px,490px 577px,456px 605px,445px 561px,503px 597px,414px 587px,403px 494px,412px 501px,412px 463px,356px 464px,429px 517px,391px 535px,385px 405px,380px 491px,483px 403px,415px 428px,459px 385px,481px 406px,426px 387px,475px 371px,526px 371px,568px 431px,549px 414px,564px 406px,599px 445px,568px 505px;}20% {background-size: 25px 25px,20px 20px,23px 23px,25px 25px,26px 26px,21px 21px,26px 26px,21px 21px,20px 20px,24px 24px,27px 27px,20px 20px,24px 24px,23px 23px,24px 24px,27px 27px,21px 21px,22px 22px,21px 21px,23px 23px,23px 23px,22px 22px,24px 24px,23px 23px,20px 20px,21px 21px,22px 22px,22px 22px,26px 26px,27px 27px;background-position: 648px 513px,594px 553px,581px 553px,513px 568px,460px 536px,486px 604px,438px 671px,431px 566px,543px 648px,388px 642px,408px 469px,431px 483px,440px 441px,304px 445px,482px 525px,381px 601px,354px 364px,349px 537px,526px 402px,407px 448px,465px 370px,492px 429px,381px 371px,460px 337px,542px 326px,605px 437px,561px 401px,590px 370px,661px 434px,587px 533px;}30% {background-size: 16px 16px,12px 12px,14px 14px,16px 16px,16px 16px,13px 13px,17px 17px,14px 14px,13px 13px,15px 15px,17px 17px,12px 12px,15px 15px,15px 15px,15px 15px,17px 17px,13px 13px,14px 14px,14px 14px,14px 14px,15px 15px,14px 14px,15px 15px,14px 14px,13px 13px,13px 13px,14px 14px,14px 14px,16px 16px,17px 17px;background-position: 690px 522px,602px 564px,586px 557px,497px 550px,482px 467px,480px 612px,418px 728px,430px 548px,578px 690px,364px 688px,445px 450px,512px 482px,500px 458px,256px 424px,524px 460px,375px 657px,326px 325px,326px 577px,557px 423px,421px 477px,472px 368px,492px 515px,341px 359px,444px 310px,554px 286px,628px 446px,560px 399px,608px 339px,713px 423px,587px 550px;}40% {background-size: 10px 10px,8px 8px,9px 9px,10px 10px,10px 10px,8px 8px,11px 11px,9px 9px,8px 8px,10px 10px,11px 11px,8px 8px,9px 9px,9px 9px,9px 9px,11px 11px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,9px 9px,8px 8px,8px 8px,9px 9px,9px 9px,10px 10px,11px 11px;background-position: 726px 529px,598px 566px,575px 550px,484px 468px,537px 445px,474px 603px,398px 781px,455px 508px,610px 726px,340px 730px,517px 479px,559px 519px,527px 535px,211px 403px,502px 431px,371px 706px,299px 288px,307px 613px,570px 460px,482px 510px,480px 378px,480px 565px,302px 349px,429px 287px,563px 249px,638px 457px,548px 410px,621px 312px,759px 410px,571px 557px;}50% {background-size: 6px 6px,5px 5px,6px 6px,6px 6px,7px 7px,5px 5px,7px 7px,5px 5px,5px 5px,6px 6px,7px 7px,5px 5px,6px 6px,6px 6px,6px 6px,7px 7px,5px 5px,6px 6px,5px 5px,5px 5px,5px 5px,5px 5px,6px 6px,6px 6px,5px 5px,5px 5px,6px 6px,5px 5px,6px 6px,7px 7px;background-position: 756px 534px,582px 560px,542px 527px,504px 419px,558px 469px,471px 574px,378px 830px,538px 469px,640px 758px,317px 768px,537px 546px,552px 540px,497px 568px,166px 382px,472px 460px,367px 751px,274px 252px,292px 646px,551px 509px,561px 496px,489px 402px,477px 565px,266px 341px,413px 268px,570px 214px,638px 470px,523px 439px,630px 287px,802px 398px,536px 547px;}60% {background-size: 4px 4px,3px 3px,3px 3px,4px 4px,4px 4px,3px 3px,4px 4px,3px 3px,3px 3px,4px 4px,4px 4px,3px 3px,4px 4px,3px 3px,3px 3px,4px 4px,3px 3px,3px 3px,3px 3px,3px 3px,3px 3px,3px 3px,4px 4px,3px 3px,3px 3px,3px 3px,3px 3px,3px 3px,4px 4px,4px 4px;background-position: 782px 538px,548px 540px,463px 474px,521px 413px,529px 510px,483px 507px,357px 876px,582px 477px,668px 787px,295px 804px,513px 576px,507px 528px,465px 555px,123px 361px,496px 537px,364px 794px,249px 217px,278px 676px,474px 527px,582px 472px,499px 455px,488px 514px,232px 334px,398px 252px,576px 182px,627px 485px,482px 522px,637px 264px,842px 385px,475px 486px;}70% {background-size: 2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,3px 3px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,2px 2px,3px 3px;background-position: 806px 541px,475px 480px,424px 451px,530px 434px,449px 509px,532px 437px,336px 921px,594px 493px,694px 814px,273px 838px,482px 571px,465px 458px,464px 497px,81px 340px,541px 546px,362px 833px,224px 183px,266px 704px,429px 481px,575px 455px,497px 554px,523px 443px,199px 327px,384px 239px,581px 151px,602px 500px,475px 581px,642px 244px,880px 373px,460px 425px;}80% {background-size: 1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px,1px 1px;background-position: 826px 544px,438px 433px,413px 444px,511px 499px,431px 478px,563px 417px,316px 965px,582px 511px,720px 840px,251px 871px,462px 525px,476px 429px,531px 457px,39px 319px,547px 509px,359px 871px,201px 150px,256px 730px,430px 440px,541px 454px,489px 598px,535px 432px,167px 321px,371px 227px,586px 121px,554px 514px,478px 607px,645px 225px,916px 360px,465px 396px;}90% {background-size: 1px 1px,0px 0px,1px 1px,1px 1px,1px 1px,0px 0px,1px 1px,1px 1px,0px 0px,1px 1px,1px 1px,0px 0px,1px 1px,0px 0px,0px 0px,1px 1px,1px 1px,1px 1px,1px 1px,0px 0px,0px 0px,0px 0px,1px 1px,1px 1px,0px 0px,0px 0px,1px 1px,0px 0px,1px 1px,1px 1px;background-position: 845px 546px,423px 410px,419px 449px,457px 552px,459px 459px,581px 413px,296px 1007px,536px 522px,744px 864px,230px 903px,508px 455px,501px 442px,568px 480px,-2px 298px,480px 472px,357px 908px,178px 117px,247px 755px,452px 415px,476px 503px,482px 618px,527px 459px,137px 316px,359px 218px,590px 93px,458px 498px,485px 615px,647px 209px,951px 348px,476px 386px;}100% {background-size: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;background-position: 862px 548px,418px 399px,449px 468px,432px 556px,525px 497px,588px 421px,275px 1049px,452px 486px,768px 887px,209px 933px,559px 456px,511px 520px,562px 516px,-42px 277px,437px 499px,356px 943px,155px 85px,239px 778px,486px 411px,460px 563px,478px 623px,476px 532px,107px 311px,348px 211px,593px 66px,412px 462px,494px 605px,648px 194px,985px 336px,491px 393px;}}
+.theButton.animated::after { animation: theButtonAnimation linear 1.65s forwards;background-image: radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%),radial-gradient(circle, rgba(102, 187, 106, 1) 45%, transparent 45%);}

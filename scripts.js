@@ -8,7 +8,6 @@ const firebaseConfig = {
   appId: "1:625545140275:web:5267a824c4c319b830eb46",
   measurementId: "G-JQ93QGPLXC"
 };
-
 let clicks = 0
 let clickPower = 1
 let egos = 0
@@ -98,7 +97,7 @@ async function wczytajLd() {
 
 async function leaderboard(){
     const nickname = document.getElementById("nickname").value.trim();
-    if (!nickname) return alert("podaj nick");
+    // if (!nickname) return alert("podaj nick");
 
     const { collection, setDoc, query, where, getDocs, doc } = await import(
         "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js"   
@@ -140,12 +139,20 @@ async function leaderboard(){
 window.onload = () => {
   wczytajLd();
 
-// Przypisanie zdarzeń JavaScript zamiast inline onclick w HTML
 document.getElementById("clicks").addEventListener("click", money);
 document.getElementById("kupEgo").addEventListener("click", ego);
 document.getElementById("zapis").addEventListener("click", leaderboard);
-};
+
+document.querySelectorAll(".particleButton").forEach(btn => {
+        let btnBg = btn.parentNode.querySelector(".particles");
+        if (!btnBg || btn === btnBg) return; // pomija sam div .particles
+
+        let initalListener = () => {
+            btnBg.classList.add("animated");
+            btn.removeEventListener("click", initalListener);
+        };
+        btn.addEventListener("click", initalListener);
+})};
 
 // Zapis
 //    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-

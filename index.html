@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <script type="module">
@@ -35,16 +36,21 @@
             window.db = db;
         </script>
         <div id="gierka">
+            <div class="buttonWrap">
             <div class="cor">
-                <img src="ejo.png" id="clicks" />
+                <img src="ejo.png" onclick="money()" id="clicks" class="particleButton" />
+                <div class='theButton particles'></div>
                 <p>Kliknięć:</p> <p id="currency">0</p>
             </div>
-        
-        <div id="shop">
-            <p>kup ego - +2 klikniec co 5 sek | 50 ejo</p> <p id="ego">0</p>
-            <button id="kupEgo">kup</button>
+            </div>
+        <div id="shop-frame">
+            <div id="shop">
+                <p>kup ego - +2 klikniec co 5 sek | <span id="egoCost">50</span> ejo</p> <p id="ego">0</p>
+                <button onclick="ego()" id="kupEgo">kup</button>
+            </div>
         </div>
         </div>
+        <br /><br /><br /> <br /><br /><br /><br /><br />
         <div id="ld">
             <ol id="lista"></ol>
         </div>
@@ -53,7 +59,7 @@
 
         <div id="zapis">
             <input type="text" id="nickname" placeholder="twuj nick ys">
-            <button id="zapis">zapisz</button>
+            <button onclick="leaderboard()">zapisz</button>
         </div>
         <script src="scripts.js"></script>
     </body>
